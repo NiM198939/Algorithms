@@ -1,0 +1,20 @@
+Maximizing loot
+
+Fractional Knapsack
+Input : Weights w1... wn and values of v1...vn items 
+Capacity W
+Output : The maximum total value of fraction of items
+that fit into a knapsack of capacity W.
+
+Lemma :
+There exists an optimal solution that uses as 
+much as possible of an item with maximal value per unit
+of weight
+
+Algorithm
+1) while knapsack is not full
+2) Choose item i with maximum vi/wi
+3) if item fits into knapsack, take all of it
+4) otherwise take so much as to fill the knapsack
+5) Return total value and amounts taken
+

@@ -1,0 +1,14 @@
+Asymptotic Notation Timeline
+logn<sqrt(n)<n<nlogn<square(n)<power(2,n)
+
+Multiplicative Constants can be Omitted
+pow(n,a)<pow(n,b) for o <a < b:
+     n = O(n2) , sqrt(n) = O(n)
+pow(n,a)<pow(n,b) for a>0 b>1:
+     n5 = O(sqrt(2)n) , n100 = O(1.1n)
+(logn)^a < n^b(a,b>0):
+	(log n)^3 = O(sqrt(n)) nlogn = O(n^2)
+smaller terms can be Omitted
+    n^2 + n = O(n^2) 2^n + n ^9 = O(2^n)
+    
+    

@@ -1,0 +1,24 @@
+Celebration party Problem
+
+Input A Set of n points x1.... xn E R
+Output The Minimum number of segments of length at most 2
+		needed to cover all the points
+
+Connection with Grouping Children
+
+1) Points x1... xn correspond to children ages
+2) Segments corresponds to groups
+3) Any two children within the same segment of length differ by 
+at most 2 years of age
+4) Any valid group of children can be put int a segment of length 2
+
+safe choice : Cover leftmost point with a segment of length 
+2 which starts in this point
+
+Greedy algo
+1 ) Cover the leftmost point with a length of 2
+2) Remove all the points within this segment
+3) Solve the same problem with the remaining points
+
+
+		

@@ -1,0 +1,39 @@
+uses of multiplying polynomials
+1) error correcting codes
+2) large integer multiplication 
+3) generating functions
+4) convolution in signal proccessing
+
+Multiplying Polynomials :
+1) Divide problem n int n/2 4 times
+
+Master Theorem:
+
+if T(n) = aT([n/b]) + O(n^d) [] = ceiling/flooring
+a>0,b>1 and d>0
+T(n) = {
+		O(n^d) if d >logb(a),
+		O(n^d logn) if d = logb(a),
+		O(n^(logb(a)) if d <logb(a)
+		}
+	example :
+	a =4 b =2 d=1
+	T(n) = 4T(n/2) + O(n)
+	since d < logb(a), then T(n) = O(n^(logb(a))) = O(n^2)
+	
+	a = 3 b=2 d =1 
+	T(n) =O(n^(logb(a)) = O(n^(log2(3))) 
+	
+	a =2 b =2 d =1
+	since d = logb(a),
+	T(n) = O(n^dlogn) = O(nlogn)
+	
+	a =1 b =2 d =0
+	since d = logb(a)
+	T(n) =O(n^dlogn) = O(n^0logn) = O(logn)
+	
+	a =2 b =2 d =2
+	since d>logb(a)
+	T(n) = O(n^d) = O(n^2)
+
+Proof :

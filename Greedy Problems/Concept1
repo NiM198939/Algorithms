@@ -1,0 +1,343 @@
+In this video, we're going to solve one more problem
+using a greedy algorithm.
+Imagine the following situation.
+You are an administrator in a doctor's office.
+And a lot of patients have just come at the same time,
+and they are all ill and angry,
+and they don't want to wait,
+and you need to somehow arrange them in a queue
+so that the total waiting time for them is minimized.
+More formally, n patients have come to the doctor's office
+at the same time, let's say nine AM.
+And they can be treated in any order,
+because they just came all at the same time.
+For the patient number i, the time needed for treatment
+you know beforehand, and it is equal to ti.
+We just assume that you can estimate the treatment time
+for any patient after just looking at the patient.
+So you need to arrange all the patients
+in such a queue that the total waiting time is minimized.
+The queue is organized because the doctor
+is just a single doctor and can treat patients one by one,
+one after another, and then the first patient
+doesn't wait at all.
+The second patient waits for the treatment
+of the first patient.
+The third patient waits for the treatment
+of the first and second patients, and so on.
+There are no delays, so the doctor works
+all the day through.
+But the patients are waiting for the previous patients,
+and for not anything else.
+So, you need to make the total waiting time,
+that is the sum of waiting times
+for all the patients, to be the minimum possible.
+So, for example, if you have just three patients waiting,
+the first one with treatment time of 15 minutes,
+the second one with treatment time t2,
+which is called 20 minutes,
+and the third one with waiting time of 10 minutes,
+and for example you arrange them
+in the same order they are already arranged,
+one, two, three, then the first patient doesn't wait at all.
+The second patient waits for the first patient,
+which is 15 minutes treatment time,
+and the third patient waits for both
+the first patient for 15 minutes,
+and then the second patient for 20 minutes.
+And that's a waiting time of 35 minutes.
+And then the total waiting time
+is zero plus 15 minutes for the second patient,
+plus 35 minutes for the third patient,
+which is total waiting time of 50 minutes.
+Now let's look at another arrangement example.
+If you first put the third patient,
+then the first patient, which is now number three,
+doesn't wait at all.
+The second patient, which is number one,
+waits for 10 minutes, because the treatment time
+for the third patient, t3, is 10 minutes.
+And the second patient in the queue waits only
+for the first patient in the queue,
+which is the third one, with 10 minutes waiting time.
+So, it's 10 minutes waiting time
+for the second patient in the queue.
+And the third patient in the queue is number two.
+So he waits for the first patient in the queue,
+with 10 minutes treatment time.
+Then he also waits for another 15 minutes
+for the second patient in the queue,
+which is the patient number one.
+And the total waiting time for the third patient
+is 10 plus 15, which is 25 minutes.
+And then the total waiting time
+is zero plus 10 minutes for the second patient in the queue,
+plus 25 minutes for the third patient in the queue,
+which is the total waiting time of 35 minutes.
+And 35 minutes is less than 50 minutes
+in the first example, so this arrangement is better.
+So what to do in the general case?
+Well, we want to apply some greedy strategy.
+And, greedy strategy works like following.
+You just make some greedy choice,
+and then you reduce your problem
+to a smaller problem of the same kind,
+and then you iterate until your problem
+reduces and reduces, and there is nothing left to solve.
+So, in this case for example,
+greedy choice could be one of the following.
+First, treat the patient with the maximum treatment time
+of all the patients.
+Another choice could be first treat the patient
+with the minimum treatment time of all the patients.
+And then the third option could be
+just take some average patient.
+Just the patient with the treatment time
+which is the closest to the average treatment time
+of all the patients.
+So, what do you think would be
+a good choice in this problem?
+Well, in this problem we're going
+to apply the following greedy algorithm.
+So we are going to first treat the patient
+with the minimum treatment time.
+And we're going to prove just in a few minutes
+that this is the optimal choice.
+So we first treat the patient
+with the minimum treatment time.
+And then remove this patient from the queue.
+And then we treat all the remaining patients
+in the queue in such order,
+so that to minimize their total waiting time,
+as if there was no first patient.
+So this is the greedy strategy.
+So we first treat the patient
+with the minimum treatment time,
+and we reduce the problem to the problem
+where we have one patient less.
+And then we treat all the remaining patients
+also in the same way, in the greedy manner.
+So, the definition of a subproblem,
+the subproblem is a similar problem of smaller size.
+For example, if you have 10 patients in the beginning,
+and we need to arrange them in a queue,
+and we somehow choose the first one and treat him,
+then we're left with only nine patients,
+and we need to arrange them so that
+to minimize their total waiting time.
+This is a similar problem, but just of a smaller size
+because we have less patients.
+Nine instead of 10.
+So, examples of subproblem.
+For the previous problem we were solving
+in the previous video, maximizing your salary,
+you are given five digits:
+one, nine, eight, nine, and six,
+and you need to maximize the salary,
+which consists of these numbers,
+and to do that we first make a greedy choice.
+You take the maximum digit nine and put it first.
+And then you append to it the solution of the problem,
+with digits one, eight, nine, and six,
+which are left when your remove this maximum digit.
+So, this is one kind of subproblem.
+Find the maximum salary consisting
+of smaller number of digits.
+Another kind is this problem.
+So you need to minimize the total waiting time
+for n patients.
+So you first consider the patient
+with the minimum treatment time, t min,
+and then you put this patient first.
+And when you put this patient first,
+it means that all other patients
+are going to wait for this patient.
+So, n minus one patient, is going to wait
+for this first patient.
+So, n minus one, times t min,
+is the total waiting time of all other patients
+for this patient.
+Apart from this waiting time,
+they are going to wait some more,
+but this is already a subproblem, a similar problem,
+because now you're going to arrange all the other patients
+in some way so that their waiting time for each other
+is the minimum possible.
+But, it is already not accounting
+for all of them waiting for the patient
+with the minimum treatment time.
+We just forget about this patient,
+after we accounted for n minus one patients
+waiting for him already.
+So this is a subproblem.
+Now we need to arrange all the other patients
+in such a way that each of them waits
+for all previous ones as small time as possible,
+and we forget that all of them
+have already waited for the first one.
+So, another definition of safe choice,
+a greedy choice, like treat the patient
+with the minimum treatment time first,
+or with the maximum treatment time first,
+or something else.
+So, any greedy choice is called a safe choice
+if there is an optimal solution of the problem
+which is consistent with this first choice.
+So, for example, if we prove that there exists
+an optimal solution which starts
+with treating a patient with the minimum treatment time,
+then choosing such a patient is a safe choice.
+If however we choose a patient
+with the maximum treatment time,
+then there could be no optimal solution
+which starts with treating such a patient.
+So, this will not be a safe choice.
+Now, we're going to prove the following lemma.
+That to treat the patient with minimum treatment time,
+t min, is a safe choice in our arrangement problem.
+The proof idea is the following.
+So, what do you think?
+Is it possible for an optimal arrangement of patients
+in a queue, to have two consecutive patients in order,
+with treatment times t1 and t2,
+so that t1 is bigger than t2?
+So that the patient with bigger treatment time
+is going to be treated before a patient
+with smaller treatment time?
+And the answer is, this is impossible.
+And to prove that, assume that
+there is such optimal arrangement,
+and consider what happens if we just
+swap these two patients,
+and don't touch any of the other patients.
+What happens?
+So if we swap these two consecutive patients,
+with treatment times t1 and t2,
+where t1 is bigger than t2,
+then the waiting time for all the previous patients
+before the first one of them doesn't change.
+The waiting time for all the patients
+after the second one also doesn't change.
+The only thing that changes
+is the waiting time for the first and the second
+of these two consecutive patients.
+So for the first one of them,
+the one which was first after we swapped them,
+he now needs to also wait for the second patient,
+for additional t2 minutes.
+And for the second patient,
+which was second initially, after we swapped them,
+now doesn't need to wait for the first patient,
+so his waiting time is decreased by t1.
+And so the total waiting time
+doesn't change for the patients before
+and after these two,
+and it changes by t2 minus t1.
+It increases by t2 for the first one,
+and decreases by t1 for the second one.
+So actually t2 minus t1 is less than zero,
+because t1 is bigger than t2.
+So, actually, the total waiting time decreases.
+But this is a contradiction to the assumption
+that this was an optimal arrangement
+of patients in a queue.
+So it cannot happen.
+So we just proved the lemma,
+that in any optimal arrangement of the patients,
+first of any two consecutive patients
+has smaller treatment time of the two.
+And so, we can now prove that,
+to treat the patient with the minimum treatment time
+is the safe choice.
+So assume that this is not the case,
+and assume that in some optimal arrangement,
+the patient with treatment time t min is not the first.
+Now let i, which is the index bigger than one,
+be the position of the first patient
+with treatment time equal to t min,
+in the optimal arrangement.
+So we know that i is strictly bigger than one,
+because the first patient is not
+with the minimum treatment time.
+We assume that.
+Then, the patient at position i minus one,
+right before that, has bigger treatment time.
+Because at position i we have the minimum treatment time,
+and this is the first position
+with the minimum treatment time.
+So, any previous position
+has strictly bigger treatment time.
+And this is a contradiction
+with the lemma we've just proved.
+So, we get a contradiction,
+and so our assumption is wrong
+that the patient with minimum treatment time
+is not the first is wrong.
+So we've proved our lemma.
+And now, in conclusion, we know
+that the following greedy algorithm
+actually works correctly.
+So we first treat the patient
+with the minimum treatment time.
+We remove this patient from the queue.
+And then we solve the subproblem.
+We treat all the remaining patients
+in such order as to minimize their total waiting time,
+forgetting about this first patient
+which we have already treated.
+And in the next video,
+we're going to implement and analyze this algorithm
+
+
+Greedy Choice
+   -> we have to determine a greedy choice before
+   solving the problem determining the which is safe greedy choice
+   			eg ( minimum waiting for treating patients,
+   				Maximum salary that u can get,
+   				
+   			
+   -> subproblem it (is similar problem of smaller
+   size)
+   ->  Minimum total waiting time for n patients -(n-1).tmin
+   	  + minimum total waiting tme for n-1 patients without tmin
+How to determine the safe choice!
+Lemma 
+	To treat the patient with minimum treating time tmin first is a safe choice
+
+Is it possible for a optimal arrangement to have two
+consecutive patients in order with treatment times t1 and t2 such that t1 > t2 ?
+
+It is impossible. Assume there is such an optimal arrangement and 
+consider what happens if we swap these two patients.
+
+Swapping two consecutive patients t1>t2:
+    -> waiting time for all patients before and after 
+    these two doesnt change
+    -> waiting time for the patient which was first increases by t2
+    and for the second one it decreases by t1
+    -> total waiting time increases by t2-t1>0, so it actually 
+    decreases
+    
+proved :
+in any optimal arrangement of the patients, first of any two
+consecutive patients has smaller arrangement time.
+
+Safe Choice Proof
+Assume the patient with treatment time tmin is not the first 
+let i>1 be the position of the first patient with treatment 
+time tmin in the optimal arrangement
+Then the patient at position i-1 has bigger treatment time a contradiciton 
+
+Main Ingredients of Greedy Algorithm 
+	 Make some First Choice
+	 The solve a problem of the same kind
+	 Smaller: fewer digits, fewer patients
+	 This is called a subproblem
+	 Take safe choice as greedy choices are often unsafe
+	
+Strategy
+1) greedy choice -> safechoice
+2) Reduce to a subproblem
+3) solve a subproblem
+4) estimate running time
+
